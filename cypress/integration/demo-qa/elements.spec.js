@@ -1,5 +1,6 @@
 import TextBoxPage from "../../pageObjects/textBoxPage";
 import CheckBoxPage from "../../pageObjects/CheckBoxPage";
+import ButtonsPage from "../../pageObjects/ButtonsPage";
 
 context("Elements Page", () => {
   context("Text box scenarios", () => {
@@ -49,7 +50,8 @@ context("Elements Page", () => {
         );
         TextBoxPage.paragrapghPermanentAddress.should(
           "contain",
-          data.permanentAdd);
+          data.permanentAdd
+        );
       });
     });
 
@@ -72,7 +74,14 @@ context("Elements Page", () => {
           .should("contain", "private")
           .should("contain", "classified")
           .should("contain", "general");
-        // cy.pause();
+      });
+      context("Buttons scenarios", () => {
+        beforeEach(() => {
+          ButtonsPage.visit();
+        });
+      });
+      it.only("Click buttons", () => {
+        ButtonsPage.doubleClickBtn.dblclick();
       });
     });
   });
